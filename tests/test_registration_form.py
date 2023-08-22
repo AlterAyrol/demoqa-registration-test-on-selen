@@ -37,6 +37,8 @@ def test_registration_form_in_mid_level_format():
 
     registration.hobby_reading_select()
 
+    registration.picture_send()
+
     registration.address_input(address)
 
     registration.state_select(state)
