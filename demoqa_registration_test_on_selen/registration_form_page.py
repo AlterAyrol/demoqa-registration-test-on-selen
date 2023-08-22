@@ -113,7 +113,7 @@ class RegistrationFormPage:
 
     '''Отправка картинки'''
     def picture_send(self):
-        browser.element(self.picture_locator).send_keys(os.path.abspath('../resources/for_send.bmp'))
+        browser.element(self.picture_locator).send_keys(os.path.abspath('../demoqa_registration_test_on_selen/resources/for_send.bmp'))
 
     '''Ввод адреса с проверкой что поле пустое'''
     def address_input(self, address):
