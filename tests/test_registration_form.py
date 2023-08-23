@@ -22,7 +22,7 @@ date_for_test = {
 
 @allure.tag('registration')
 @allure.severity(Severity.CRITICAL)
-@allure.label("owner", "ALterAyrol")
+@allure.label("owner", "AlterAyrol")
 @allure.epic('Тестирование вкладок в боковом меню')
 @allure.feature('Раздел Practice Form')
 @allure.story("Пользователь заполняет форму регистрации тестовыми данными. Указывает пол - мужской, хобби - чтение'")
