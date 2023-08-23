@@ -100,7 +100,7 @@ class RegistrationFormPage:
         browser.element(new_day_container_locator).click()
 
     @allure.step('Ввод тематики')
-    def subject_input(self, subject):
+    def subject_input(self, subject: str):
         browser.element(self.subjects_locator).click().type(subject).press_enter()
 
     @allure.step('Выбор хобби - спорт')
@@ -120,15 +120,15 @@ class RegistrationFormPage:
         browser.element(self.picture_locator).send_keys(os.path.abspath('../demoqa_registration_test_on_selen/resources/for_send.bmp'))
 
     @allure.step('Ввод адреса с проверкой что поле пустое')
-    def address_input(self, address):
+    def address_input(self, address: str):
         browser.element(self.address_locator).should(be.blank).type(address)
 
     @allure.step('Выбор штата')
-    def state_select(self, state):
+    def state_select(self, state: str):
         browser.element(self.select_state_locator).type(state).press_enter()
 
     @allure.step('Выбор города')
-    def city_select(self, city):
+    def city_select(self, city: str):
         browser.element(self.select_city_locator).type(city).press_enter()
 
     @allure.step('Подтверждение отправки формы')
@@ -136,7 +136,7 @@ class RegistrationFormPage:
         browser.element(self.submit_button_locator).click()
 
     @allure.step('Проверка на наличие текста подтверждения успешного создания формы регистрации')
-    def assert_form_registration_text(self, text):
+    def assert_form_registration_text(self, text: str):
         browser.element(self.submitting_form_locator).should(have.text(text))
 
     @allure.step('Проверка данных в таблице формы регистрации')
