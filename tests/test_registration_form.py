@@ -1,3 +1,6 @@
+import allure
+from allure_commons.types import Severity
+
 from demoqa_registration_test_on_selen.registration_form_page import RegistrationFormPage
 
 url = '/automation-practice-form'
@@ -16,7 +19,13 @@ date_for_test = {
     'submitting_text': 'Thanks for submitting the form'
 }
 
-'''Заполняет форму регистрации тестовыми данными. Указывает пол - мужской, хобби - чтение'''
+
+@allure.tag('registration')
+@allure.severity(Severity.CRITICAL)
+@allure.label("owner", "ALterAyrol")
+@allure.epic('Тестирование вкладок в боковом меню')
+@allure.feature('Раздел Practice Form')
+@allure.story("Пользователь заполняет форму регистрации тестовыми данными. Указывает пол - мужской, хобби - чтение'")
 def test_registration_form_in_mid_level_format():
     registration = RegistrationFormPage()
     registration.open_page(url)
