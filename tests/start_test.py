@@ -2,7 +2,7 @@ from selene import browser
 from selene import be, have
 import os
 
-# date
+# data
 first_name = 'Ivan'
 last_name = 'Ivanov'
 email = 'asdfg@mail.ru'
