@@ -3,9 +3,12 @@ from selene import browser
 from selene import be, have
 import os
 
+from demoqa_registration_test_on_selen.date.date_for_registration_page import DateForRegistrationPage, \
+    UserWithGenderAndHobby
+
 
 class RegistrationFormPage:
-    browser.config.base_url = 'https://demoqa.com'
+    url = '/automation-practice-form'
 
     def __init__(self):
         self.browser = browser
@@ -49,8 +52,8 @@ class RegistrationFormPage:
     # Actions
 
     @allure.step('открытие нужной страницы')
-    def open_page(self, url: str):
-        self.browser.open(url)
+    def open_page(self):
+        self.browser.open(self.url)
 
     @allure.step('Ввод имени с проверкой что поле пустое')
     def first_name_input(self, first_name: str):
@@ -138,18 +141,18 @@ class RegistrationFormPage:
         browser.element(self.submitting_form_locator).should(have.text(text))
 
     @allure.step('Проверка данных в таблице формы регистрации')
-    def assert_form_registration_table(self, date_for_test: dict):
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['first_name']} "
-                                                                        f"{date_for_test['last_name']}"))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test['email']))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test['mobile']))
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['birth_day']} "
-                                                                        f"{date_for_test['birth_month']},"
-                                                                        f"{date_for_test['birth_year']}"))
+    def assert_form_registration_table(self, date_for_test: DateForRegistrationPage):
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.first_name} "
+                                                                        f"{date_for_test.last_name}"))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.email))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.mobile))
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.birth_day} "
+                                                                        f"{date_for_test.birth_month},"
+                                                                        f"{date_for_test.birth_year}"))
         browser.element(self.table_submitting_locator).should(have.text('for_send.bmp'))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test['address']))
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['state']} "
-                                                                        f"{date_for_test['city']}"))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.address))
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.state} "
+                                                                        f"{date_for_test.city}"))
 
     @allure.step('Проверяет указнный при регистрации пол в таблице - мужской')
     def assert_male(self):
@@ -176,45 +179,45 @@ class RegistrationFormPage:
     def assert_hobby_music(self):
         browser.element(self.table_submitting_locator).should(have.text('Music'))
 
-    def fill_registration_form(self, date_for_test: dict):
-        self.first_name_input(date_for_test['first_name'])
-        self.last_name_input(date_for_test['last_name'])
+    def fill_registration_form(self, date_for_test: UserWithGenderAndHobby):
+        self.first_name_input(date_for_test.first_name)
+        self.last_name_input(date_for_test.last_name)
 
-        self.email_input(date_for_test['email'])
+        self.email_input(date_for_test.email)
 
         self.male_select()
 
-        self.phone_number_input(date_for_test['mobile'])
+        self.phone_number_input(date_for_test.mobile)
 
         self.birthday_calendar_open()
-        self.birthday_month_select(date_for_test['birth_month'])
-        self.birthday_year_select(date_for_test['birth_year'])
-        self.birthday_day_select(date_for_test['birth_day'])
+        self.birthday_month_select(date_for_test.birth_month)
+        self.birthday_year_select(date_for_test.birth_year)
+        self.birthday_day_select(date_for_test.birth_day)
 
-        self.subject_input(date_for_test['subject'])
+        self.subject_input(date_for_test.subject)
 
         self.hobby_reading_select()
 
         self.picture_send()
 
-        self.address_input(date_for_test['address'])
+        self.address_input(date_for_test.address)
 
-        self.state_select(date_for_test['state'])
-        self.city_select(date_for_test['city'])
+        self.state_select(date_for_test.state)
+        self.city_select(date_for_test.city)
 
         self.form_submit()
 
-    def assert_full_registration_form(self, date_for_test: dict, gender: str, hobby: str):
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['first_name']} "
-                                                                        f"{date_for_test['last_name']}"))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test['email']))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test['mobile']))
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['birth_day']} "
-                                                                        f"{date_for_test['birth_month']},"
-                                                                        f"{date_for_test['birth_year']}"))
+    def assert_full_registration_form(self, date_for_test: UserWithGenderAndHobby):
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.first_name} "
+                                                                        f"{date_for_test.last_name}"))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.email))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.mobile))
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.birth_day} "
+                                                                        f"{date_for_test.birth_month},"
+                                                                        f"{date_for_test.birth_year}"))
         browser.element(self.table_submitting_locator).should(have.text('for_send.bmp'))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test['address']))
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['state']} "
-                                                                        f"{date_for_test['city']}"))
-        browser.element(self.table_submitting_locator).should(have.text(gender))
-        browser.element(self.table_submitting_locator).should(have.text(hobby))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.address))
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.state} "
+                                                                        f"{date_for_test.city}"))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.gender))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test.hobby))
