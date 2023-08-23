@@ -4,6 +4,8 @@ from allure_commons.types import Severity
 from demoqa_registration_test_on_selen.registration_form_page import RegistrationFormPage
 from demoqa_registration_test_on_selen.date import date_for_registration_page
 
+url = '/automation-practice-form'
+
 
 @allure.tag('registration')
 @allure.severity(Severity.CRITICAL)
