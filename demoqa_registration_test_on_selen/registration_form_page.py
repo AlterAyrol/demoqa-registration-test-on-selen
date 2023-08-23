@@ -40,6 +40,7 @@ class RegistrationFormPage:
     select_city_locator = '//input[@id="react-select-4-input"]'
 
     submit_button_locator = '//button[@id="submit"]'
+
     submitting_form_locator = '//div[@id="example-modal-sizes-title-lg"]'
     table_submitting_locator = '//div[@class="table-responsive"]//tbody'
 
@@ -131,4 +132,45 @@ class RegistrationFormPage:
     def form_submit(self):
         browser.element(self.submit_button_locator).click()
 
+    '''Проверка на наличие текста подтверждения успешного создания формы регистрации'''
+    def assert_form_registration_text(self, text):
+        browser.element(self.submitting_form_locator).should(have.text(text))
 
+    '''Проверка данных в таблице формы регистрации'''
+    def assert_form_registration_table(self, date_for_test: dict):
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['first_name']} "
+                                                                        f"{date_for_test['last_name']}"))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test['email']))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test['mobile']))
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['birth_day']} "
+                                                                        f"{date_for_test['birth_month']},"
+                                                                        f"{date_for_test['birth_year']}"))
+        browser.element(self.table_submitting_locator).should(have.text('for_send.bmp'))
+        browser.element(self.table_submitting_locator).should(have.text(date_for_test['address']))
+        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test['state']} "
+                                                                        f"{date_for_test['city']}"))
+
+    '''Проверяет указнный при регистрации пол в таблице - мужской'''
+    def assert_male(self):
+        browser.element(self.table_submitting_locator).should(have.text('Male'))
+
+    '''Проверяет указнный при регистрации пол в таблице - женский'''
+    def assert_female(self):
+        browser.element(self.table_submitting_locator).should(have.text('Female'))
+
+    '''Проверяет указнный при регистрации пол в таблице - промежуточный'''
+    def assert_other(self):
+        browser.element(self.table_submitting_locator).should(have.text('Other'))
+
+
+    '''Проверяет указнное хобби при регистрации в таблице - спорт'''
+    def assert_hobby_sport(self):
+        browser.element(self.table_submitting_locator).should(have.text('Sports'))
+
+    '''Проверяет указнное хобби при регистрации в таблице - чтение'''
+    def assert_hobby_reading(self):
+        browser.element(self.table_submitting_locator).should(have.text('Reading'))
+
+    '''Проверяет указнное хобби при регистрации в таблице - музыка'''
+    def assert_hobby_music(self):
+        browser.element(self.table_submitting_locator).should(have.text('Music'))
