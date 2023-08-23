@@ -48,7 +48,6 @@ class RegistrationFormPage:
     submitting_form_locator = '//div[@id="example-modal-sizes-title-lg"]'
     table_submitting_locator = '//div[@class="table-responsive"]//tbody'
 
-
     # Actions
 
     @allure.step('открытие нужной страницы')
@@ -63,7 +62,7 @@ class RegistrationFormPage:
     def last_name_input(self, last_name: str):
         browser.element(self.last_name_locator).should(be.blank).type(last_name)
 
-    @allure.step('Ввод емейла с проверкой что поле пустое')
+    @allure.step('Ввод е-мейла с проверкой что поле пустое')
     def email_input(self, email: str):
         browser.element(self.email_locator).should(be.blank).type(email)
 
@@ -154,28 +153,27 @@ class RegistrationFormPage:
         browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.state} "
                                                                         f"{date_for_test.city}"))
 
-    @allure.step('Проверяет указнный при регистрации пол в таблице - мужской')
+    @allure.step('Проверяет указанный при регистрации пол в таблице - мужской')
     def assert_male(self):
         browser.element(self.table_submitting_locator).should(have.text('Male'))
 
-    @allure.step('Проверяет указнный при регистрации пол в таблице - женский')
+    @allure.step('Проверяет указанный при регистрации пол в таблице - женский')
     def assert_female(self):
         browser.element(self.table_submitting_locator).should(have.text('Female'))
 
-    @allure.step('Проверяет указнный при регистрации пол в таблице - промежуточный')
+    @allure.step('Проверяет указанный при регистрации пол в таблице - промежуточный')
     def assert_other(self):
         browser.element(self.table_submitting_locator).should(have.text('Other'))
 
-
-    @allure.step('Проверяет указнное хобби при регистрации в таблице - спорт')
+    @allure.step('Проверяет указанное хобби при регистрации в таблице - спорт')
     def assert_hobby_sport(self):
         browser.element(self.table_submitting_locator).should(have.text('Sports'))
 
-    @allure.step('Проверяет указнное хобби при регистрации в таблице - чтение')
+    @allure.step('Проверяет указанное хобби при регистрации в таблице - чтение')
     def assert_hobby_reading(self):
         browser.element(self.table_submitting_locator).should(have.text('Reading'))
 
-    @allure.step('Проверяет указнное хобби при регистрации в таблице - музыка')
+    @allure.step('Проверяет указанное хобби при регистрации в таблице - музыка')
     def assert_hobby_music(self):
         browser.element(self.table_submitting_locator).should(have.text('Music'))
 
