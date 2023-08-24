@@ -5,6 +5,7 @@ import os
 
 from demoqa_registration_test_on_selen.data.date_for_registration_page import DateForRegistrationPage, \
     UserWithGenderAndHobby
+from demoqa_registration_test_on_selen.resources.resources import send_picture
 
 
 class RegistrationFormPage:
@@ -117,7 +118,7 @@ class RegistrationFormPage:
 
     @allure.step('Отправка картинки')
     def picture_send(self):
-        browser.element(self.picture_locator).send_keys(os.path.abspath('../demoqa_registration_test_on_selen/resources/for_send.bmp'))
+        send_picture(self.picture_locator)
 
     @allure.step('Ввод адреса с проверкой что поле пустое')
     def address_input(self, address: str):
