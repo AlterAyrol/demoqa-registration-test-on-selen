@@ -48,24 +48,3 @@ def test_registration_form_in_mid_level_format():
     registration.assert_form_registration_table(user)
     registration.assert_male()
     registration.assert_hobby_reading()
-
-
-@allure.tag('registration')
-@allure.severity(Severity.CRITICAL)
-@allure.label("owner", "AlterAyrol")
-@allure.epic('Тестирование вкладок в боковом меню')
-@allure.feature('Раздел Practice Form')
-@allure.story("Пользователь заполняет форму регистрации тестовыми данными. Указывает пол - мужской, хобби - чтение'")
-def test_registration_form_in_high_level_format():
-    registration = RegistrationFormPage()
-    user = date_for_registration_page.user_male_reading
-
-    registration.open_page()
-
-    registration.fill_registration_form(user)
-
-    registration.assert_full_registration_form(user)
-
-
-
-

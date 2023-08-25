@@ -207,17 +207,3 @@ class RegistrationFormPage:
 
         self.form_submit()
 
-    def assert_full_registration_form(self, date_for_test: UserWithGenderAndHobby):
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.first_name} "
-                                                                        f"{date_for_test.last_name}"))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test.email))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test.mobile))
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.birth_day} "
-                                                                        f"{date_for_test.birth_month},"
-                                                                        f"{date_for_test.birth_year}"))
-        browser.element(self.table_submitting_locator).should(have.text('for_send.bmp'))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test.address))
-        browser.element(self.table_submitting_locator).should(have.text(f"{date_for_test.state} "
-                                                                        f"{date_for_test.city}"))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test.gender))
-        browser.element(self.table_submitting_locator).should(have.text(date_for_test.hobby))
