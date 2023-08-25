@@ -1,7 +1,6 @@
 import allure
 from selene import browser
 from selene import be, have
-import os
 
 from demoqa_registration_test_on_selen.data.date_for_registration_page import DateForRegistrationPage, \
     UserWithGenderAndHobby
