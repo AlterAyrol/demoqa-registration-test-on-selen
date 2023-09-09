@@ -12,7 +12,6 @@ Jenkins сборка
 ![Allure Report - Google Chrome 02 09 2023 19_07_28](https://github.com/AlterAyrol/demoqa-registration-test-on-selen/assets/110398007/9d5e71a9-d4ed-4d49-9b1d-5b3b1698ac6f)
 
 Отчёт о прохождении автотестов присланный в телеграм:
-![QA_bot_for_report_channel @ Станислав (9791) 09 09 2023 17_47_27](https://github.com/AlterAyrol/demoqa-registration-test-on-selene/assets/110398007/4985545f-bbf2-4914-bd7c-ed6ddd060882)
-
+![QA GURU Python _ 7 поток _ Объявления @ Станислав (9795) 09 09 2023 18_12_00](https://github.com/AlterAyrol/demoqa-registration-test-on-selene/assets/110398007/56b900c1-11bf-4426-940f-7e1121f71392)
 
 
